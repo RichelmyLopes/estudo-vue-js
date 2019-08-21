@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="#" :style="estiloBotao">Teste Style</a>
+        <button @click="tamanho ++">Click</button>
+        <p :style="tamanhoTexto">Teste computed</p>
+        {{tamanhoTexto}}
+        <p :class="[cor, {ativo: estaAtivo}]">Texto Azul</p>
+        <p :class="{ativo: estaAtivo, cor: possioCor}">Teste</p>
+        <button @click="estaAtivo =! estaAtivo">Trocar</button>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                cor: "Azul",
+                background: "vermelho",
+                estaAtivo: false,
+                possioCor: true,
+                estiloBotao: {
+                    background: "tomato", 
+                    color: "#fff", 
+                    fontSize: "20px",
+                }
+            },
+            computed:{
+                tamanhoTexto(){
+                    const tamanho = Math.random() * 100;
+                    return {
+                        fontSize: tamanho + 'px',
+                    }
+                }
+            }
+        });
+
+    </script>
+
+    <style>
+        .vermelho{
+            background: red;
+        }
+
+        .Azul {
+            color: blue;
+        }
+        .ativo {
+            background: pink;
+        }
+    </style>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- EXERCICIO 1 -->
+        <!-- <div>
+            <label for="">width</label>
+            <input type="text" name="width" value="width" v-model.lazy="estiloBotao.width">
+        </div>
+        <div>
+            <label for="">height</label>
+            <input type="text" name="height" value="height" v-model.lazy="estiloBotao.height">
+        </div>
+        <div>
+            <label for="">fontSize</label>            
+            <input type="text" name="fontSize" value="fontSize" v-model="estiloBotao.fontSize">
+        </div>
+        <div>
+            <label for="">fontFamily</label> 
+            <input type="text" name="fontFamily" value="fontFamily" v-model="estiloBotao.fontFamily">
+        </div>
+        <div>
+            <label for="">textAlign</label> 
+            <input type="text" name="textAlign" value="textAlign" v-model="estiloBotao.textAlign">
+        </div>
+        <div>
+            <label for="">background</label> 
+            <input type="text" name="background" value="background" v-model="estiloBotao.background">
+        </div>
+        <div>
+            <label for="">color</label> 
+            <input type="color" name="color" value="color" v-model="estiloBotao.color">
+        </div>
+        <div>
+            <label for="">borderRadius</label> 
+            <input type="text" name="borderRadius" value="borderRadius" v-model="estiloBotao.borderRadius">
+        </div>
+        <button :style="estiloBotao">Botao</button> -->
+        <!-- EXERCICIO 2 -->
+
+        <form action="">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" v-model="nome">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" id="email" v-model="email">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone" v-model.number="telefone">
+            <label for="menssagem">Menssagem</label>
+            <textarea type="textArea" name="menssagem" id="menssagem" v-model="menssagem"></textarea>
+        </form>
+
+        <button @click.prevent="enviarDados">Enviar</button>
+        <div>
+            <ul>
+                <li v-for="(dados, chave) in formulario">{{chave}}: {{dados}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                // EXERCICIO 1
+                // estiloBotao: {
+                //     width: "",
+                //     height: "",
+                //     fontSize: "",
+                //     fontFamily: "",
+                //     textAlign: "",
+                //     background: "",
+                //     color: "",
+                //     borderRadius: "",
+                // }
+                // EXERCICIO 2
+                nome: "",
+                email: "",
+                telefone: "",
+                menssagem: "",
+                formulario: {},
+            },
+            methods: {
+                enviarDados(){
+                    this.formulario = {
+                        nome: this.nome,
+                        telefone: this.telefone,
+                        email: this.email,
+                        menssagem: this.menssagem,
+                    }
+                }
+            }
+        });
+        
+    </script>
+
+    <style>
+        label{
+            display: block;
+        }
+        input{
+            display: block;
+        }
+        textarea {
+            display: block;
+        }
+    </style>
+
+
+</body>
+
+</html>

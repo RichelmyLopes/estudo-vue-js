@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <input @click.alt="ativar" type="text">
+        <input @keyup.enter="ativar" type="text">
+        <input @keyup.esc="ativar" type="text">
+        <input @keyup.up="ativar" type="text">
+        <p style="position: fixed">{{totalScroll}}</p> -->
+    </div>
+
+    <script>
+        
+
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                totalScroll: 0,
+            },
+            methods: {
+                ativar(event){
+                   console.log(event);
+                   event.target.style.border = "4px solid blue";
+                 },
+                handleScroll(event){
+                    if(event.key === "Enter"){
+                        this.totalScroll = window.scrollY;
+                    }
+                }
+            },
+            created(){
+                window.addEventListener('keyup', this.handleScroll);
+            }
+        });
+        
+    </script>
+
+    <style>
+        
+        body {
+            height: 2000px;
+        }
+        
+    </style>
+
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    <!-- <template v-if="logado">
+        <p>Usuário está logado</p>
+        <button @click="logado = false">Deslogar</button>
+    </template>
+    <template v-else="logado">
+            <p>Usuário está Deslogado</p>
+            <button @click="logado = true">Logar</button>
+    </template> -->
+<!-- 
+    <p v-if="logado"> O usuario está logado</p>
+    <p v-show="logado">O Usuario esta logado</p> -->
+
+    <p>Carrinho</p>
+    <p>Numero de itens no estoque <span>{{estoqueBanana}}</span></p>
+    <p>Numero de itens no carrinho: <span>{{numItens}}</span></p>
+    <button v-show="estoqueBanana" @click="adicionarItens">Adicionar Item</button>
+    <button v-show="numItens" @click="removerItens">Remover Item</button>
+    <p v-if="estoqueBanana === 0">Nao temos mais unidades desse produto</p>
+
+    </div>
+
+
+    <script>
+        
+        const vm = new Vue({
+            el: "#app",
+            data: {
+               estoqueBanana: 7,
+               numItens: 0,
+            },
+            methods: {
+                adicionarItens() {
+                    this.numItens ++;
+                    this.estoqueBanana --;
+                },
+                removerItens(){
+                    this.numItens --;
+                    this.estoqueBanana ++;
+                }
+            }
+        });
+        
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <ul>
+        <li v-for="({nome, populacao}, key) in estados" :key="key + nome"> 
+            <p>{{populacao}}</p>
+            <p>{{nome}}</p>
+        </li>
+        <div v-for="n in 5">{{n}}</div>
+        </ul> -->
+        <!-- <ul> 
+            <li v-for="item in frutas">{{item}}</li>
+        </ul>
+        <button @click="modificar">modificar</button>
+        <button @click="removerPop">RemoverPop</button>
+        <button @click="adicionarPush">adicionarPush</button> -->
+
+        <!-- EXERCICIO -->
+
+
+        <ul>
+            <li v-for="dado, key in dadosJsonViaCep">
+                {{key}}: {{dado}}
+            </li>
+
+            <div v-for="{curso,link , aulas} in cursos">
+                <h1><a :href="link">{{curso}}</a></h1>
+                <ul>
+                    <li v-for="{nome, tempo} in aulas">- {{nome}} {{tempo}}</li>
+                </ul>
+            </div>
+            <!-- 
+            <button @click="fazFetch">Buscar Dados</button> -->
+            <button @click="puxarAula">PuxarAula</button>
+        </ul>
+
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+
+                //     frutas: ["Banana", "mamao", "couve-flor", "pera"],
+
+                //     estados: {
+                //         sp: {
+                //             populacao: "45 milhoes",
+                //             nome: "São Paulo",
+                //         },
+
+                //         mg: {
+                //             populacao: "21 Milhoes",
+                //             nome: "Minas Gerais",
+                //         },
+
+                //         rj: {
+                //             populacao: "17 milhoes",
+                //             nome: "Rio de Janeiro",
+                //         }
+                //     }
+                // },
+                // methods: {
+                //     removerPop(){
+                //         this.frutas.pop();
+                //     },
+                //     modificar() {
+                //         this.$set(this.frutas, 0, "Berinjela");
+                //     },
+                //     adicionarPush(){
+                //         this.frutas.push("Teste");
+                //     }
+
+
+                // EXERCICIO
+                dadosJsonViaCep: {},
+                cursos: {},
+            },
+            methods: {
+                fazFetch() {
+                    const buscaDados = fetch("https://viacep.com.br/ws/04538133/json/");
+
+                    buscaDados
+                        .then(r => r.json())
+                        .then(body => {
+                            this.dadosJsonViaCep = body;
+                        })
+                },
+                puxarAula() {
+                    fetch("./cursos.json")
+                        .then(r => r.json())
+                        .then(body => {
+                            this.cursos = body;
+                        })
+                }
+            }
+        });
+
+    </script>
+
+
+
+
+</body>
+
+</html>

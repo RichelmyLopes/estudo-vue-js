@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <input type="text" v-model.lazy="nome">
+        <input type="text" :value="email">
+
+        <p>Nome: {{nome}}</p>
+        <p>E-mail: {{email}}</p>
+
+        <br>
+            <input type="text" name="" id="" v-model.number="ano">
+        </br>
+
+        {{ano}}
+
+        <input type="checkbox" id="receberEmail" v-model="receberEmail">
+        <label for="receberEmail">Receber E-mail</label>
+        {{receberEmail}}
+
+        <div>
+            <input type="radio" name="Azul" id="Azul" v-model="cor" value="Azul">
+            <label for="Azul">Azul</label>
+            <input type="radio" name="Vermelho" id="Vermelho" v-model="cor" value="Vermelho">
+            <label for="Vermelho">Vermelho</label>
+            <input type="radio" name="Verde" id="Verde" v-model="cor" value="Verde">
+            <label for="Verde">Verde</label>
+
+
+            {{cor}}
+        </div>
+        
+        <div>
+            <select v-model.lazy="fruta">
+                <option disabled value="">Selecione uma Fruta</option>
+                <option value="banana">Banana</option>
+                <option value="morango">Morango</option>
+                <option value="uva">Uva</option>
+            </select>
+            {{fruta}}
+        </div>
+
+    <div>
+
+    <script>
+        
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                nome: "André",
+                email: "contato@origamid.com",
+                receberEmail: "",
+                cor: "",
+                fruta: "",
+                ano: 0,
+            }
+        });
+        
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    <ul>
+        <li><a @click.prevent="fazerFetch" href="https://viacep.com.br/ws/69020210/json/">City 1</a></li>
+        <li><a @click.prevent="fazerFetch" href="https://viacep.com.br/ws/41150595/json/">City 2</a></li>
+        <li><a @click.prevent="fazerFetch" href="https://viacep.com.br/ws/60115282/json/">City 3</a></li>
+        <li><a @click.prevent="fazerFetch" href="https://viacep.com.br/ws/65025001/json/">City 4</a></li>
+        <li><a @click.prevent="fazerFetch" href="https://viacep.com.br/ws/01001000/json/">City 5</a></li>
+    </ul>
+
+    <div>
+        <p>Cep - {{tudo.cep}}</p>
+        <p>IBGE - {{tudo.ibge}}</p>
+        <p>Bairro - {{tudo.bairro}}</p>
+    </div>
+
+    </div>
+
+
+    <script>
+        
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                tudo: {},
+            },
+            methods: {
+                fazerFetch(event){
+                    const href = event.currentTarget.href;
+                    const get = fetch(href)
+                    .then(r => r.json())
+                    .then(body => {
+                        this.tudo = body;
+                    });
+                }
+            }
+        });
+        
+    </script>
+
+
+
+
+</body>
+
+</html>

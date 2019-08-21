@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(valor, chave) in dados">{{chave}}: {{dados}}</li>
+        </ul>
+        <button @click="contador++">Total: {{contador}}</button>
+    </div>
+
+    <script>
+        
+
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                dados: {},
+                contador: 0,
+            },
+            methods: {
+                puxarGithub(){
+                    fetch("https://api.github.com/users/RichelmyLopes")
+                    .then(r => r.json())
+                    .then(body => {
+                        this.dados = body;
+                    });
+                }
+            },
+            created(){
+                this.puxarGithub();
+            },
+            updated(){
+                const titulo = document.querySelector("title");
+                titulo.innerText = this.contador;
+            }
+        });
+        
+    </script>
+
+    <style>
+        
+        body {
+            height: 2000px;
+        }
+        
+    </style>
+
+
+</body>
+
+</html>

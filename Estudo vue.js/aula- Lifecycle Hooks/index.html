@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{mensagem}}
+        {{dados}} -->
+        <button @click="contador++">Total: {{contador}}</button>
+        <button @click="destruir">Destruir</button>
+    </div>
+
+    <script>
+        
+
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                mensagem: "Essa é uma menssagem",
+                dados: {},
+                contador: 0,
+            },
+            methods: {
+                puxarGithub(){
+                    fetch("https://api.github.com/users/origamid")
+                    .then(r => r.json())
+                    .then(body => {
+                        this.dados = body;
+                    });
+                },
+                destruir(){
+                    this.$destroy();
+                }
+            },
+            beforeCreated() {
+                console.log(this.mensagem);
+            },
+            created(){
+                console.log(this.mensagem);
+                this.puxarGithub();
+            },
+            beforeMount() {
+                console.log("BeforeMounted" + this.mensagem);
+                console.log(this.$el);
+            },
+            mounted(){
+                console.log("Mouted" + this.mensagem);
+                console.log(this.$el);
+            },
+            beforeUpdate(){
+                console.log("teste");
+            },
+            updated(){
+                console.log("test updated")
+            },
+            beforeDestroy(){
+                console.log("Vai destruir");
+            },
+            destroyed(){
+                console.log("Destruiu")
+            }
+        });
+        
+    </script>
+
+    <style>
+        
+        body {
+            height: 2000px;
+        }
+        
+    </style>
+
+
+</body>
+
+</html>
